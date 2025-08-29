@@ -10,8 +10,12 @@ const Generate = () => {
   const searchParams = useSearchParams();
   const [links, setlinks] = useState([{link:"",linktext:""}])
   // const [linktxt, setlinktxt] = useState("")
-  const [handle, sethandle] = useState(searchParams.get("handle"))
+  const [handle, sethandle] = useState("")
   const [picture, setpicture] = useState("")
+    useEffect(() => {
+    const value = searchParams.get("handle")
+    if (value) sethandle(value)
+  }, [searchParams])
 
   const savelink = async()=>{
     const myHeaders = new Headers();
